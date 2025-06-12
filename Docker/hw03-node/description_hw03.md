@@ -47,8 +47,7 @@ Docker/hw03-node
 
 
 ### <a id="s2" style="color: #008000">2. Сохранить исходный код приложения в файл app.js</a>
-На рисунках к ДЗ <span style="color:#F00000">в коде ОШИБКИ!!!</span>
-Явно чего-то НЕ хватает.
+На рисунках к ДЗ весь код.
 <div style="font: bold normal 110% sans-serif; color: #8A2BE2; white-space: pre; border-top: 2px dotted #008000; padding: 5px;"></div>  
 
 
