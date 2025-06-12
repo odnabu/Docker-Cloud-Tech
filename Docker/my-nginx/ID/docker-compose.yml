@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  go-app:
+    image: viktarveratsennikau/go-idea-server:1.0.0
+    ports:
+      - "10020:8080"
+
