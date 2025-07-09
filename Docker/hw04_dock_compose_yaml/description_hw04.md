@@ -1,4 +1,4 @@
-Docker & Cloud Tech, Viktor Veretennikov (________________)  
+Docker & Cloud Tech, Veretennikov Viktor (Andreev Vyacheslav)  
 04.07.2025
 
 ### <div style="color: #008000">Домашнее задание 4: Docker: Multistage dockerfiles, hw04_docker_compose</div>    
