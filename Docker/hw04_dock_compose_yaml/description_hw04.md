@@ -184,7 +184,7 @@ Docker & Cloud Tech, Viktor Veretennikov (________________)
 ```
 
 Если нужно удалить поднятую БД "db-data" со всеми вложенными папками, то можно сделать удаление 
-через терминал VOLUMES:
+через терминал VOLUMES ([Удалить ТОМА и папку db_dat из Les_04](https://chatgpt.com/s/t_686e9f98ae1881919835145920e89712)):
 ```shell
   # Посмотреть список volume'ов:
    docker volume ls
@@ -549,9 +549,9 @@ Redis — это БД, размещаемая в памяти, которая и
 <div style="font: bold normal 110% sans-serif; color: #8A2BE2; white-space: pre; border-top: 2px dotted #008000; padding: 5px;"></div>  
 
 ## <a id="s4" style="color: #008000">4. GitHub</a>
-Ссылка на комментарии по ДЗ <a>description_hw04.md</a> со скриншотами: .  
+Ссылка на комментарии по ДЗ <a>description_hw04.md</a> со скриншотами: https://github.com/odnabu/Docker-Cloud-Tech/blob/main/Docker/hw04_dock_compose_yaml/description_hw04.md.  
 
-Ссылка на папку с ДЗ <a>HW_07</a>: .  
+Ссылка на папку с ДЗ <a>hw_04</a>: https://github.com/odnabu/Docker-Cloud-Tech/tree/main/Docker/hw04_dock_compose_yaml.  
 
 ---
 <div style="font: bold normal 110% sans-serif; color: #8A2BE2; white-space: pre; border-top: 2px dotted #8A2BE2; padding: 5px; margin: 40px 0 40px 0"></div>
