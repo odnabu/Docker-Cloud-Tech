@@ -1,0 +1,74 @@
+# hw04 with docker-compose.
+# Access via "http://localhost:8080"
+# (or "http://$(docker-machine ip):8080" if using docker-machine)
+
+
+
+# Как нам пояснили на паре, версию МОЖНО не указывать. Потому я ее закомментирую.
+# version: '3.8'    # версия синтаксиса docker-compose.
+
+
+# ============  Определение списка контейнеров в "services"  ============
+# Раздел, в котором описаны все сервисы (контейнеры), входящие в состав приложения.
+services:
+# ВСЕ контейнеры подключаются к одной сети "mynetwork", что позволяет им общаться по имени.
+
+  # ____ 1-ый сервис под именем "web" - Контейнер с Nginx:
+  web:
+    # Используемый образ, в данном случае nginx:latest - официальный образ Nginx.
+    # Высокопроизводительный веб-сервер, обратный прокси-сервер, почтовый прокси-сервер и балансировщик нагрузки.
+    # Используется для доставки статических файлов, обработки запросов, распределения нагрузки
+    # между серверами и повышения производительности веб-сайтов:
+    image: nginx:latest
+    # Проброс портов: хост 8080 → контейнер 80. Это означает, что порт 80 внутри контейнера (Nginx)
+    # будет доступен снаружи по порту 8080. Это позволяет доступ к hw04 через http://localhost:8080.
+    ports:
+    - "8080:80"
+    # Подключение к сети mynetwork:
+    networks:
+      - mynetwork
+
+  # ____ 2-ый сервис под именем "redis" - Контейнер с Redis:
+  redis:
+    image: redis:latest
+    networks:
+    - mynetwork
+
+  # ____ 3-ый сервис под именем "mysql" - Контейнер с MySQL:
+  mysql:
+    image: mysql:8.0      # официальный образ MySQL 8.0
+    # Передача переменных окружения для инициализации базы:
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password    # Пароль для root.
+      MYSQL_DATABASE: example_db            # Создание БД с именем "example_db".
+      MYSQL_USER: example_user              # Создание пользователя с доступом к этой базе.
+      MYSQL_PASSWORD: example_password      # Пароль для доступа для "example_user".
+    # Подключение томов - хранилище данных базы вынесено вне контейнера (для сохранности при перезапуске):
+    volumes:
+      - mysql_data:/var/lib/mysql           # After initial setup, download LocalSettings.php to the same directory.
+    # Подключение к сети mynetwork:
+    networks:
+      - mynetwork
+    # Healthcheck для MySQL:
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password" ]
+      # mysqladmin ping проверяет, жив ли сервер.
+      #-h localhost — проверка изнутри контейнера.
+      #-u root -p... — учетка и пароль.
+      interval: 30s         # как часто проверять.
+      timeout: 5s           # сколько ждать ответа.
+      retries: 5            # сколько раз подряд можно ошибиться.
+      start_period: 20s     # сколько подождать перед первой проверкой.
+
+
+# ============  Объявление именованного volume  ============
+# Создание именованного тома mysql_data, который Docker будет сохранять между перезапусками контейнера.
+# ВАЖНО для MySQL, чтобы данные не исчезали.
+volumes:
+  mysql_data:
+
+# ============  Объявление сети "mynetwork"  ============
+# Docker создаст bridge-сеть с именем mynetwork, в которую входят все 3 сервиса.
+networks:
+  mynetwork:
+
