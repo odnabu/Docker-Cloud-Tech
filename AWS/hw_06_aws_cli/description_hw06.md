@@ -333,9 +333,9 @@ __sg-04a47168edaac3a78 - 111124-olga-od__
 
 
 ## <a id="s3" style="color: #008000">3. GitHub</a>
-Ссылка на комментарии по ДЗ <a>description_hw06.md</a> со скриншотами: .  
+Ссылка на комментарии по ДЗ <a>description_hw06.md</a> со скриншотами: https://github.com/odnabu/Docker-Cloud-Tech/blob/main/AWS/hw_06_aws_cli/description_hw06.md.  
 
-Ссылка на папку с ДЗ <a>hw_06</a>: .  
+Ссылка на папку с ДЗ <a>hw_06</a>: https://github.com/odnabu/Docker-Cloud-Tech/tree/main/AWS/hw_06_aws_cli.  
 
 ---
 <div style="font: bold normal 110% sans-serif; color: #8A2BE2; white-space: pre; border-top: 2px dotted #8A2BE2; padding: 5px; margin: 40px 0 40px 0"></div>
